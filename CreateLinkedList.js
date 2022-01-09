@@ -62,4 +62,6 @@
     insertAfterNode(head.next.next, 0);
     console.log(printLinkedList());
 
-    // test commit 
+    // test commit git status
+    // new branch
+    
