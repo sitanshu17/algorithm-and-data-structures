@@ -1,3 +1,11 @@
+    /**
+     * 1. Insert Node at head of Linked List.
+     * 2. Insert Node at end of Linked List.
+     * 3. Count length of Linked List.
+     * 4. Print Linked List.
+     * 5. insert after any particular node.
+     */
+    
     class Node {
         constructor(data) {
             this.data = data;
@@ -50,6 +58,20 @@
         }
     }
 
+    const LengthOfLinkedList = () => {
+        if(head == null) {
+            return 0;
+        } else {
+            let temp = head;
+            let count = 0;
+            while (temp) {
+                count++;
+                temp = temp.next;
+            }
+            return count;
+        }
+    }
+
     addNodeAtStart(5);
     addNodeAtStart(4);
     addNodeAtStart(3);
@@ -59,3 +81,4 @@
     addNodeAtStart(7);
     insertAfterNode(head.next.next, 0);
     console.log(printLinkedList());
+    console.log(LengthOfLinkedList());
