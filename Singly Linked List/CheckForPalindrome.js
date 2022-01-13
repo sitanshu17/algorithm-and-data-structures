@@ -34,38 +34,61 @@ and Hence, the output is 0.
 // console.log(i);             // displays 2
 
 
-const reverseWord = (sentence) => {
-    console.log(sentence);
-    let wordArr = sentence.split('.');
-    let result = '';
-    wordArr.forEach(element => {
-        result = result + element + ' ';
-    });
-    console.log(result);
-
-    let left = 0;
-    let right = wordArr.length - 1;
-    while (left < right) {
-        let temp = wordArr[left];
-        wordArr[left] = wordArr[right];
-        wordArr[right] = temp;
-        left++; 
-        right--;
+class Node {
+    constructor(data) {
+        this.data = data;
+        this.next = null;
     }
+}
+let head = null;
+const addNodeAtStart = (data) => {
+    if(head == null) {
+        head = new Node(data);
+    } else {
+        let newNode = new Node(data);
+        newNode.next = head;
+        head = newNode;
+    }
+};
 
-    let rewResult = '';
-    let count = 0;
-    wordArr.forEach(element => {
-        count++;
-        if(wordArr.length == count) {
-            console.log('count: ', count);
-            rewResult = rewResult + element;
-        } else {
-            rewResult = rewResult + element + '.';
+
+const PrintLinkedList = () => {
+    let temp = head;
+    if(!temp) {
+        return 'Empty Linked List';
+    } else {
+        let result = [];
+        while (temp) {
+            result.push(temp.data);
+            temp = temp.next;
         }
-    });
-    console.log(rewResult);
+        console.log(result);
+    }
+};
+
+const PalindromeCheck = () => {
+    let temp = head;
+    let stack = [];
+    while(temp) {
+        stack.push(temp.data);
+        temp = temp.next;
+    }
+    let isPalindrome = true;
+    temp = head;
+    while(temp) {
+        let tempData = stack.pop();
+        if(tempData !== temp.data) {
+            return false;
+        }
+        temp = temp.next;
+    }
+    return isPalindrome;
 }
 
-let sentence = 'i.like.this.program.very.much';
-reverseWord(sentence);
+addNodeAtStart(5);
+addNodeAtStart(4);
+addNodeAtStart(3);
+addNodeAtStart(2);
+addNodeAtStart(1);
+PrintLinkedList();
+console.log(PalindromeCheck());
